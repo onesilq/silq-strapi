@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_tour_step_steps",
+  "info": {
+    "displayName": "Step",
+    "icon": "walk"
+  },
+  "options": {},
+  "attributes": {
+    "orderStep": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string"
+    },
+    "placement": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "title": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

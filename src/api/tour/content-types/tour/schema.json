@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tours",
+  "info": {
+    "singularName": "tour",
+    "pluralName": "tours",
+    "displayName": "Tour"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "stepsList": {
+      "type": "component",
+      "component": "tour-step.steps",
+      "repeatable": true
+    }
+  }
+}

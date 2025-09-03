@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_completions",
+  "info": {
+    "singularName": "tour-completion",
+    "pluralName": "tour-completions",
+    "displayName": "Tour Completion"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user_id": {
+      "type": "string"
+    },
+    "tour_identifier": {
+      "type": "string"
+    },
+    "tour_status": {
+      "type": "string"
+    },
+    "completed_at": {
+      "type": "datetime"
+    }
+  }
+}
