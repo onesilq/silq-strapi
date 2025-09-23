@@ -1,0 +1,119 @@
+# Default values for strapi
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: my-strapi-project
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 1337
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: strapi.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+  #  - secretName: strapi-tls
+  #    hosts:
+  #      - strapi.local
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Database configuration
+database:
+  # Database type: sqlite, postgres, mysql
+  type: "postgres"
+  host: "postgres"
+  port: 5432
+  name: "strapi"
+  username: "strapi"
+  password: "strapi"
+  ssl: false
+
+# Environment variables
+env:
+  NODE_ENV: "production"
+  HOST: "0.0.0.0"
+  PORT: "1337"
+  APP_KEYS: "toBeModified1,toBeModified2"
+  API_TOKEN_SALT: "toBeModified"
+  ADMIN_JWT_SECRET: "toBeModified"
+  TRANSFER_TOKEN_SALT: "toBeModified"
+  JWT_SECRET: "toBeModified"
+
+# Persistent volume for uploads and database
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+# PostgreSQL subchart
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "postgres"
+    username: "strapi"
+    password: "strapi"
+    database: "strapi"
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi

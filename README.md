@@ -1,61 +1,140 @@
-# 🚀 Getting started with Strapi
+# Strapi Kubernetes Deployment
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+A production-ready deployment of Strapi CMS on Kubernetes using Minikube, Helm, and Docker.
 
-### `develop`
+## 🚀 Quick Start
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+```bash
+# Run the interactive deployment
+./scripts/quick-start.sh
 
-```
-npm run develop
-# or
-yarn develop
-```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
+# Access your Strapi admin
+kubectl port-forward svc/strapi 1337:1337
+open http://localhost:1337/admin
 ```
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+## 📁 Project Structure
 
 ```
-npm run build
-# or
-yarn build
+my-strapi-project/
+├── 📄 README.md                           # This file
+├── 📄 KUBERNETES_DEPLOYMENT_GUIDE.md      # Comprehensive deployment guide
+├── 📄 ARCHITECTURE_DIAGRAMS.md            # Mermaid architecture diagrams
+├── 📄 LEARNING_RESOURCES.md              # Curated learning resources
+├── 🐳 Dockerfile                         # Container image definition
+├── 📦 helm/strapi/                       # Helm chart directory
+└── 📁 scripts/                           # Deployment automation
 ```
 
-## ⚙️ Deployment
+## 🏗️ Architecture
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+This deployment creates a cloud-native Strapi CMS with:
 
+- **Strapi Application**: Headless CMS running in Kubernetes pods
+- **PostgreSQL Database**: Persistent data storage with Bitnami Helm chart
+- **NGINX Ingress**: External access and load balancing
+- **Persistent Volumes**: Data persistence for uploads and database
+- **Helm Charts**: Package management for Kubernetes applications
+
+## 🛠️ Technology Stack
+
+| Component | Technology | Purpose |
+|-----------|-------------|---------|
+| **Container Runtime** | Docker | Application containerization |
+| **Orchestration** | Kubernetes | Container orchestration and management |
+| **Local Cluster** | Minikube | Local Kubernetes development environment |
+| **Package Manager** | Helm | Kubernetes application packaging |
+| **Database** | PostgreSQL | Relational database for Strapi |
+| **Web Server** | NGINX Ingress | External access and routing |
+| **CMS** | Strapi v5.23.1 | Headless content management system |
+| **Language** | Node.js 18 | Runtime environment |
+
+## 📋 Prerequisites
+
+```bash
+# Install required software
+brew install --cask docker
+brew install minikube kubectl helm
+
+# System requirements: 4GB+ RAM, 2+ CPU cores, 20GB+ storage
 ```
-yarn strapi deploy
+
+## 🚀 Deployment Options
+
+### Option 1: Interactive Deployment (Recommended)
+
+```bash
+./scripts/quick-start.sh
 ```
 
-## 📚 Learn more
+### Option 2: Direct Deployment
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+```bash
+# Standalone deployment (recommended)
+./scripts/deploy-standalone.sh
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+# Helm deployment with dependencies
+./scripts/deploy-to-minikube.sh
+```
 
-## ✨ Community
+## 🌐 Access Your Application
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+```bash
+# Port forward for local access
+kubectl port-forward svc/strapi 1337:1337
+
+# Access Strapi admin
+open http://localhost:1337/admin
+```
+
+## 📊 Monitoring
+
+```bash
+# Check deployment status
+kubectl get pods,svc,ingress
+
+# View logs
+kubectl logs -l app=strapi
+
+# Check Helm releases
+helm list
+```
+
+## 🧹 Cleanup
+
+```bash
+# Clean up deployment
+./scripts/cleanup.sh
+
+# Reset Minikube
+minikube delete
+minikube start
+```
+
+## 📚 Documentation
+
+- **[KUBERNETES_DEPLOYMENT_GUIDE.md](./KUBERNETES_DEPLOYMENT_GUIDE.md)** - Complete deployment guide
+- **[ARCHITECTURE_DIAGRAMS.md](./ARCHITECTURE_DIAGRAMS.md)** - Mermaid diagrams
+- **[LEARNING_RESOURCES.md](./LEARNING_RESOURCES.md)** - Learning resources
+
+## 🔗 Useful Resources
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [Docker Documentation](https://docs.docker.com/)
+- [Helm Documentation](https://helm.sh/docs/)
+- [Strapi Documentation](https://docs.strapi.io/)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+**Happy Deploying! 🚀**

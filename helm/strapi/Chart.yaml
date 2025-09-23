@@ -1,0 +1,16 @@
+apiVersion: v2
+name: strapi
+description: A Helm chart for Strapi CMS
+type: application
+version: 0.1.0
+appVersion: "5.23.1"
+keywords:
+  - strapi
+  - cms
+  - headless
+home: https://strapi.io
+sources:
+  - https://github.com/strapi/strapi
+maintainers:
+  - name: Your Name
+    email: your.email@example.com
