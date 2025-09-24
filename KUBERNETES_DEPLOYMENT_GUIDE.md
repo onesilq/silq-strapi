@@ -21,8 +21,9 @@ This deployment creates a cloud-native Strapi CMS with the following components:
 - **Strapi Application**: Headless CMS running in Kubernetes pods
 - **PostgreSQL Database**: Persistent data storage with Bitnami Helm chart
 - **NGINX Ingress**: External access and load balancing
-- **Persistent Volumes**: Data persistence for uploads and database
+- **Persistent Volumes**: Data persistence for uploads, application data, and database
 - **Helm Charts**: Package management for Kubernetes applications
+- **Minikube**: Local Kubernetes development environment
 
 ## Technology Stack
 
@@ -32,10 +33,11 @@ This deployment creates a cloud-native Strapi CMS with the following components:
 | **Orchestration** | Kubernetes | Container orchestration and management |
 | **Local Cluster** | Minikube | Local Kubernetes development environment |
 | **Package Manager** | Helm | Kubernetes application packaging |
-| **Database** | PostgreSQL | Relational database for Strapi |
+| **Database** | PostgreSQL 17.6.0 | Relational database for Strapi |
 | **Web Server** | NGINX Ingress | External access and routing |
 | **CMS** | Strapi v5.23.1 | Headless content management system |
-| **Language** | Node.js 18 | Runtime environment |
+| **Language** | Node.js 18 Alpine | Runtime environment |
+| **Database Chart** | Bitnami PostgreSQL 16.7.27 | Helm chart for database |
 
 ## Prerequisites
 
@@ -210,32 +212,27 @@ graph TB
     subgraph "Kubernetes Cluster"
         I --> S[Strapi Service]
         S --> D[Strapi Deployment]
-        D --> P1[Strapi Pod 1]
-        D --> P2[Strapi Pod 2]
-        D --> P3[Strapi Pod N]
+        D --> P1[Strapi Pod]
         
         subgraph "Database Layer"
             DB[PostgreSQL Service]
-            DB --> DBP[PostgreSQL Pod]
-            DBP --> DBV[(Database Volume)]
+            DB --> DBP[PostgreSQL StatefulSet]
+            DBP --> DBV[(PostgreSQL PVC)]
         end
         
         subgraph "Storage Layer"
-            PV1[(Uploads Volume)]
-            PV2[(Data Volume)]
+            PV1[(Strapi Uploads PVC)]
+            PV2[(Strapi Data PVC)]
         end
         
         P1 --> DB
-        P2 --> DB
-        P3 --> DB
-        
         P1 --> PV1
         P1 --> PV2
     end
     
     subgraph "External Services"
-        R[Container Registry]
-        H[Helm Repository]
+        R[Docker Registry]
+        H[Bitnami Helm Repo]
     end
     
     D --> R

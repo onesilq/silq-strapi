@@ -126,7 +126,7 @@ helm upgrade --install strapi ./helm/strapi \
   --set image.repository=my-strapi-project \
   --set image.tag=latest \
   --set postgresql.enabled=false \
-  --set database.host=postgresql-postgresql \
+  --set database.host=postgresql \
   --set database.port=5432 \
   --set database.name=strapi \
   --set database.username=strapi \
@@ -166,7 +166,7 @@ env:
 ```yaml
 database:
   type: "postgres"
-  host: "postgresql-postgresql"
+  host: "postgresql"
   port: 5432
   name: "strapi"
   username: "strapi"

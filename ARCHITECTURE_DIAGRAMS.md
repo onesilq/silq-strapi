@@ -10,35 +10,30 @@ graph TB
         U[User] --> I[NGINX Ingress]
     end
     
-    subgraph "Kubernetes Cluster"
+    subgraph "Kubernetes Cluster (Minikube)"
         I --> S[Strapi Service]
         S --> D[Strapi Deployment]
-        D --> P1[Strapi Pod 1]
-        D --> P2[Strapi Pod 2]
-        D --> P3[Strapi Pod N]
+        D --> P1[Strapi Pod]
         
         subgraph "Database Layer"
             DB[PostgreSQL Service]
-            DB --> DBP[PostgreSQL Pod]
-            DBP --> DBV[(Database Volume)]
+            DB --> DBP[PostgreSQL StatefulSet]
+            DBP --> DBV[(PostgreSQL Volume)]
         end
         
         subgraph "Storage Layer"
-            PV1[(Uploads Volume)]
-            PV2[(Data Volume)]
+            PV1[(Strapi Uploads PVC)]
+            PV2[(Strapi Data PVC)]
         end
         
         P1 --> DB
-        P2 --> DB
-        P3 --> DB
-        
         P1 --> PV1
         P1 --> PV2
     end
     
     subgraph "External Services"
-        R[Container Registry]
-        H[Helm Repository]
+        R[Docker Registry]
+        H[Bitnami Helm Repo]
     end
     
     D --> R
@@ -168,7 +163,7 @@ graph TB
         LB[NGINX Ingress]
     end
     
-    subgraph "Application Tier"
+    subgraph "Application Tier (Current: 1 Pod)"
         LB --> S1[Strapi Pod 1]
         LB --> S2[Strapi Pod 2]
         LB --> S3[Strapi Pod 3]
@@ -176,22 +171,27 @@ graph TB
     end
     
     subgraph "Database Tier"
-        S1 --> DB[(PostgreSQL)]
+        S1 --> DB[(PostgreSQL StatefulSet)]
         S2 --> DB
         S3 --> DB
         SN --> DB
     end
     
     subgraph "Storage Tier"
-        S1 --> PV1[(Uploads)]
+        S1 --> PV1[(Strapi Uploads PVC)]
         S2 --> PV1
         S3 --> PV1
         SN --> PV1
         
-        DB --> PV2[(Database)]
+        S1 --> PV2[(Strapi Data PVC)]
+        S2 --> PV2
+        S3 --> PV2
+        SN --> PV2
+        
+        DB --> PV3[(PostgreSQL PVC)]
     end
     
-    subgraph "Monitoring"
+    subgraph "Monitoring (Future)"
         M1[Prometheus]
         M2[Grafana]
         M3[Logs]
@@ -391,6 +391,7 @@ graph LR
     K8S --> H
     H --> R
 ```
+
 
 ## How to Use These Diagrams
 

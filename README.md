@@ -13,6 +13,7 @@ kubectl port-forward svc/strapi 1337:1337
 open http://localhost:1337/admin
 ```
 
+
 ## 📁 Project Structure
 
 ```
