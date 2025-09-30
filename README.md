@@ -1,141 +1,73 @@
-# Strapi Kubernetes Deployment
+# Silq Strapi - ECR Docker Image
 
-A production-ready deployment of Strapi CMS on Kubernetes using Minikube, Helm, and Docker.
+This repository contains a Strapi application configured to build and deploy Docker images to AWS ECR in the Ohio region (us-east-2).
 
-## 🚀 Quick Start
+## Purpose
 
-```bash
-# Run the interactive deployment
-./scripts/quick-start.sh
+This repository serves a single purpose: **Build a Docker image of Strapi and publish it to the ECR repository on AWS Ohio**.
 
-# Access your Strapi admin
-kubectl port-forward svc/strapi 1337:1337
-open http://localhost:1337/admin
-```
+## Prerequisites
 
+- AWS CLI configured with appropriate permissions
+- Docker installed
+- AWS Account ID set as environment variable
 
-## 📁 Project Structure
+## Setup
 
-```
-my-strapi-project/
-├── 📄 README.md                           # This file
-├── 📄 KUBERNETES_DEPLOYMENT_GUIDE.md      # Comprehensive deployment guide
-├── 📄 ARCHITECTURE_DIAGRAMS.md            # Mermaid architecture diagrams
-├── 📄 LEARNING_RESOURCES.md              # Curated learning resources
-├── 🐳 Dockerfile                         # Container image definition
-├── 📦 helm/strapi/                       # Helm chart directory
-└── 📁 scripts/                           # Deployment automation
-```
+1. Set your AWS Account ID:
+   ```bash
+   export AWS_ACCOUNT_ID=your-account-id
+   ```
 
-## 🏗️ Architecture
+2. Ensure AWS CLI is configured:
+   ```bash
+   aws configure
+   ```
 
-This deployment creates a cloud-native Strapi CMS with:
+## Usage
 
-- **Strapi Application**: Headless CMS running in Kubernetes pods
-- **PostgreSQL Database**: Persistent data storage with Bitnami Helm chart
-- **NGINX Ingress**: External access and load balancing
-- **Persistent Volumes**: Data persistence for uploads and database
-- **Helm Charts**: Package management for Kubernetes applications
+### Local Build and Push
 
-## 🛠️ Technology Stack
+1. Login to ECR:
+   ```bash
+   ./scripts/ecr-login.sh
+   ```
 
-| Component | Technology | Purpose |
-|-----------|-------------|---------|
-| **Container Runtime** | Docker | Application containerization |
-| **Orchestration** | Kubernetes | Container orchestration and management |
-| **Local Cluster** | Minikube | Local Kubernetes development environment |
-| **Package Manager** | Helm | Kubernetes application packaging |
-| **Database** | PostgreSQL | Relational database for Strapi |
-| **Web Server** | NGINX Ingress | External access and routing |
-| **CMS** | Strapi v5.23.1 | Headless content management system |
-| **Language** | Node.js 18 | Runtime environment |
+2. Build and push to ECR:
+   ```bash
+   ./scripts/ecr-build-and-push.sh [tag]
+   ```
 
-## 📋 Prerequisites
+### GitHub Actions
 
-```bash
-# Install required software
-brew install --cask docker
-brew install minikube kubectl helm
+The repository includes a GitHub Actions workflow (`.github/workflows/ecr-deploy.yml`) that automatically builds and pushes Docker images to ECR when code is pushed to the main/master branch.
 
-# System requirements: 4GB+ RAM, 2+ CPU cores, 20GB+ storage
-```
+**Required GitHub Secrets:**
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
 
-## 🚀 Deployment Options
+## ECR Repository
 
-### Option 1: Interactive Deployment (Recommended)
+- **Region:** us-east-2 (Ohio)
+- **Repository Name:** silq-strapi
+- **Image URI:** `{AWS_ACCOUNT_ID}.dkr.ecr.us-east-2.amazonaws.com/silq-strapi`
 
-```bash
-./scripts/quick-start.sh
-```
+## Docker Image Features
 
-### Option 2: Direct Deployment
+- Based on Node.js 18 Alpine
+- Non-root user for security
+- Health check endpoint
+- Production optimizations
+- Signal handling with dumb-init
 
-```bash
-# Standalone deployment (recommended)
-./scripts/deploy-standalone.sh
+## Environment Variables
 
-# Helm deployment with dependencies
-./scripts/deploy-to-minikube.sh
-```
+The Docker image expects these environment variables:
 
-## 🌐 Access Your Application
+- `NODE_ENV=production`
+- `HOST=0.0.0.0`
+- `PORT=1337`
 
-```bash
-# Port forward for local access
-kubectl port-forward svc/strapi 1337:1337
+## Health Check
 
-# Access Strapi admin
-open http://localhost:1337/admin
-```
-
-## 📊 Monitoring
-
-```bash
-# Check deployment status
-kubectl get pods,svc,ingress
-
-# View logs
-kubectl logs -l app=strapi
-
-# Check Helm releases
-helm list
-```
-
-## 🧹 Cleanup
-
-```bash
-# Clean up deployment
-./scripts/cleanup.sh
-
-# Reset Minikube
-minikube delete
-minikube start
-```
-
-## 📚 Documentation
-
-- **[KUBERNETES_DEPLOYMENT_GUIDE.md](./KUBERNETES_DEPLOYMENT_GUIDE.md)** - Complete deployment guide
-- **[ARCHITECTURE_DIAGRAMS.md](./ARCHITECTURE_DIAGRAMS.md)** - Mermaid diagrams
-- **[LEARNING_RESOURCES.md](./LEARNING_RESOURCES.md)** - Learning resources
-
-## 🔗 Useful Resources
-
-- [Kubernetes Documentation](https://kubernetes.io/docs/)
-- [Docker Documentation](https://docs.docker.com/)
-- [Helm Documentation](https://helm.sh/docs/)
-- [Strapi Documentation](https://docs.strapi.io/)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-**Happy Deploying! 🚀**
+The container includes a health check that verifies the application is responding on port 1337.
