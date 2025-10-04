@@ -1,61 +1,73 @@
-# 🚀 Getting started with Strapi
+# Silq Strapi - ECR Docker Image
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+This repository contains a Strapi application configured to build and deploy Docker images to AWS ECR in the Ohio region (us-east-2).
 
-### `develop`
+## Purpose
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+This repository serves a single purpose: **Build a Docker image of Strapi and publish it to the ECR repository on AWS Ohio**.
 
-```
-npm run develop
-# or
-yarn develop
-```
+## Prerequisites
 
-### `start`
+- AWS CLI configured with appropriate permissions
+- Docker installed
+- AWS Account ID set as environment variable
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+## Setup
 
-```
-npm run start
-# or
-yarn start
-```
+1. Set your AWS Account ID:
+   ```bash
+   export AWS_ACCOUNT_ID=your-account-id
+   ```
 
-### `build`
+2. Ensure AWS CLI is configured:
+   ```bash
+   aws configure
+   ```
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+## Usage
 
-```
-npm run build
-# or
-yarn build
-```
+### Local Build and Push
 
-## ⚙️ Deployment
+1. Login to ECR:
+   ```bash
+   ./scripts/ecr-login.sh
+   ```
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+2. Build and push to ECR:
+   ```bash
+   ./scripts/ecr-build-and-push.sh [tag]
+   ```
 
-```
-yarn strapi deploy
-```
+### GitHub Actions
 
-## 📚 Learn more
+The repository includes a GitHub Actions workflow (`.github/workflows/ecr-deploy.yml`) that automatically builds and pushes Docker images to ECR when code is pushed to the main/master branch.
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+**Required GitHub Secrets:**
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+## ECR Repository
 
-## ✨ Community
+- **Region:** us-east-2 (Ohio)
+- **Repository Name:** silq-strapi
+- **Image URI:** `{AWS_ACCOUNT_ID}.dkr.ecr.us-east-2.amazonaws.com/silq-strapi`
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+## Docker Image Features
 
----
+- Based on Node.js 18 Alpine
+- Non-root user for security
+- Health check endpoint
+- Production optimizations
+- Signal handling with dumb-init
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+## Environment Variables
+
+The Docker image expects these environment variables:
+
+- `NODE_ENV=production`
+- `HOST=0.0.0.0`
+- `PORT=1337`
+
+## Health Check
+
+The container includes a health check that verifies the application is responding on port 1337.
