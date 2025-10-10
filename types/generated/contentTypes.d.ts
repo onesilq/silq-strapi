@@ -551,6 +551,9 @@ export interface ApiTourCompletionTourCompletion
   };
   attributes: {
     completed_at: Schema.Attribute.DateTime;
+    completion_status: Schema.Attribute.Enumeration<
+      ['completed', 'skipped', 'opted_out']
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -561,8 +564,15 @@ export interface ApiTourCompletionTourCompletion
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    skip_count: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
     tour_identifier: Schema.Attribute.String;
-    tour_status: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

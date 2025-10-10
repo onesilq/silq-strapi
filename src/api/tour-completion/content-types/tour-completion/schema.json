@@ -17,11 +17,21 @@
     "tour_identifier": {
       "type": "string"
     },
-    "tour_status": {
-      "type": "string"
-    },
     "completed_at": {
       "type": "datetime"
+    },
+    "completion_status": {
+      "type": "enumeration",
+      "enum": [
+        "completed",
+        "skipped",
+        "opted_out"
+      ]
+    },
+    "skip_count": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
     }
   }
 }
