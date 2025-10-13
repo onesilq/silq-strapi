@@ -17,6 +17,11 @@
     "identifier": {
       "type": "string"
     },
+    "skipLimit": {
+      "type": "integer",
+      "default": 5,
+      "min": 0
+    },
     "path": {
       "type": "string"
     },

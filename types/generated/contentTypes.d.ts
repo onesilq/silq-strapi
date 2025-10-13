@@ -550,8 +550,8 @@ export interface ApiTourCompletionTourCompletion
     draftAndPublish: true;
   };
   attributes: {
-    completed_at: Schema.Attribute.DateTime;
-    completion_status: Schema.Attribute.Enumeration<
+    completedAt: Schema.Attribute.DateTime;
+    completionStatus: Schema.Attribute.Enumeration<
       ['completed', 'skipped', 'opted_out']
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -564,7 +564,7 @@ export interface ApiTourCompletionTourCompletion
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    skip_count: Schema.Attribute.Integer &
+    skipCount: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {
           min: 0;
@@ -572,11 +572,11 @@ export interface ApiTourCompletionTourCompletion
         number
       > &
       Schema.Attribute.DefaultTo<0>;
-    tour_identifier: Schema.Attribute.String;
+    tourIdentifier: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user_id: Schema.Attribute.String;
+    userId: Schema.Attribute.String;
   };
 }
 
@@ -602,6 +602,14 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     path: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    skipLimit: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<5>;
     stepsList: Schema.Attribute.Component<'tour-step.steps', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
