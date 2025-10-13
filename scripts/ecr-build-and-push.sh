@@ -5,7 +5,7 @@
 
 set -e
 
-AWS_REGION="us-east-2"
+AWS_REGION="us-east-1"
 ECR_REPOSITORY="silq-strapi"
 TAG=${1:-latest}
 AWS_ACCOUNT_ID=${AWS_ACCOUNT_ID:-""}

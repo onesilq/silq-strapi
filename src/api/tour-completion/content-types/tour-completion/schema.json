@@ -11,17 +11,27 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "user_id": {
+    "userId": {
       "type": "string"
     },
-    "tour_identifier": {
+    "tourIdentifier": {
       "type": "string"
     },
-    "tour_status": {
-      "type": "string"
-    },
-    "completed_at": {
+    "completedAt": {
       "type": "datetime"
+    },
+    "completionStatus": {
+      "type": "enumeration",
+      "enum": [
+        "completed",
+        "skipped",
+        "opted_out"
+      ]
+    },
+    "skipCount": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
     }
   }
 }

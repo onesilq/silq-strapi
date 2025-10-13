@@ -48,9 +48,10 @@ The repository includes a GitHub Actions workflow (`.github/workflows/ecr-deploy
 
 ## ECR Repository
 
-- **Region:** us-east-2 (Ohio)
+- **Region:** us-east-1 (N. Virginia) (for Prod)
+- **Region:** us-east-2 (Ohio) (for staging)
 - **Repository Name:** silq-strapi
-- **Image URI:** `{AWS_ACCOUNT_ID}.dkr.ecr.us-east-2.amazonaws.com/silq-strapi`
+- **Image URI:** `{AWS_ACCOUNT_ID}.dkr.ecr.{REGION}.amazonaws.com/silq-strapi`
 
 ## Docker Image Features
 
