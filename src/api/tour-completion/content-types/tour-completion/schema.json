@@ -23,9 +23,9 @@
     "completionStatus": {
       "type": "enumeration",
       "enum": [
-        "completed",
-        "skipped",
-        "opted_out"
+        "COMPLETED",
+        "SKIPPED",
+        "OPTED_OUT"
       ]
     },
     "skipCount": {

@@ -552,7 +552,7 @@ export interface ApiTourCompletionTourCompletion
   attributes: {
     completedAt: Schema.Attribute.DateTime;
     completionStatus: Schema.Attribute.Enumeration<
-      ['completed', 'skipped', 'opted_out']
+      ['COMPLETED', 'SKIPPED', 'OPTED_OUT']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
