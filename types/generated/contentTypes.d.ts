@@ -576,6 +576,7 @@ export interface ApiTourCompletionTourCompletion
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    userEmail: Schema.Attribute.Email;
     userId: Schema.Attribute.String;
   };
 }
@@ -594,6 +595,7 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    featureName: Schema.Attribute.String;
     identifier: Schema.Attribute.String;
     isActive: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

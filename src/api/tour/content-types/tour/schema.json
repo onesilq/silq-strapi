@@ -17,13 +17,16 @@
     "identifier": {
       "type": "string"
     },
+    "featureName": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
     "skipLimit": {
       "type": "integer",
       "default": 5,
       "min": 0
-    },
-    "path": {
-      "type": "string"
     },
     "isActive": {
       "type": "boolean"
