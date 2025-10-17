@@ -14,11 +14,11 @@
     "userId": {
       "type": "string"
     },
+    "userEmail": {
+      "type": "email"
+    },
     "tourIdentifier": {
       "type": "string"
-    },
-    "completedAt": {
-      "type": "datetime"
     },
     "completionStatus": {
       "type": "enumeration",
@@ -32,6 +32,9 @@
       "type": "integer",
       "default": 0,
       "min": 0
+    },
+    "completedAt": {
+      "type": "datetime"
     }
   }
 }
