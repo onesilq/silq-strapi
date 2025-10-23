@@ -20,8 +20,8 @@ ECR_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY"
 
 echo "Building Docker image: $ECR_URI:$TAG"
 
-# Build the Docker image
-docker build -t $ECR_URI:$TAG .
+# Build the Docker image for x86_64 platform
+docker build --platform linux/amd64 -t $ECR_URI:$TAG .
 
 echo "Docker image built successfully: $ECR_URI:$TAG"
 
