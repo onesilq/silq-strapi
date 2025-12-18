@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_festivity_elements",
+  "info": {
+    "displayName": "element",
+    "icon": "brush"
+  },
+  "options": {},
+  "attributes": {
+    "placement": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "top-left",
+        "top-right",
+        "bottom-left",
+        "bottom-right",
+        "center"
+      ]
+    },
+    "viewPortHeight": {
+      "type": "decimal"
+    },
+    "viewPortWidth": {
+      "type": "decimal"
+    },
+    "mediaUrl": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

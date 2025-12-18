@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "festive_wrappers",
+  "info": {
+    "singularName": "festive-wrapper",
+    "pluralName": "festive-wrappers",
+    "displayName": "Festive Wrapper"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "element": {
+      "type": "component",
+      "component": "festivity.element",
+      "repeatable": true
+    },
+    "ctaUrl": {
+      "type": "string"
+    },
+    "validFrom": {
+      "type": "date"
+    },
+    "validTill": {
+      "type": "date"
+    },
+    "audioUrl": {
+      "type": "string"
+    }
+  }
+}

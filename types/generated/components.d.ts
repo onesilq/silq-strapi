@@ -1,5 +1,32 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface FestivityElement extends Struct.ComponentSchema {
+  collectionName: 'components_festivity_elements';
+  info: {
+    displayName: 'element';
+    icon: 'brush';
+  };
+  attributes: {
+    isActive: Schema.Attribute.Boolean;
+    mediaUrl: Schema.Attribute.String;
+    placement: Schema.Attribute.Enumeration<
+      [
+        'top',
+        'right',
+        'bottom',
+        'left',
+        'top-left',
+        'top-right',
+        'bottom-left',
+        'bottom-right',
+        'center',
+      ]
+    >;
+    viewPortHeight: Schema.Attribute.Decimal;
+    viewPortWidth: Schema.Attribute.Decimal;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -81,6 +108,7 @@ export interface TourStepSteps extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'festivity.element': FestivityElement;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

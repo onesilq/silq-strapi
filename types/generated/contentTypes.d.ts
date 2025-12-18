@@ -506,6 +506,41 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFestiveWrapperFestiveWrapper
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'festive_wrappers';
+  info: {
+    displayName: 'Festive Wrapper';
+    pluralName: 'festive-wrappers';
+    singularName: 'festive-wrapper';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    audioUrl: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctaUrl: Schema.Attribute.String;
+    element: Schema.Attribute.Component<'festivity.element', true>;
+    isActive: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::festive-wrapper.festive-wrapper'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    validFrom: Schema.Attribute.Date;
+    validTill: Schema.Attribute.Date;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -1132,6 +1167,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::festive-wrapper.festive-wrapper': ApiFestiveWrapperFestiveWrapper;
       'api::global.global': ApiGlobalGlobal;
       'api::tour-completion.tour-completion': ApiTourCompletionTourCompletion;
       'api::tour.tour': ApiTourTour;
