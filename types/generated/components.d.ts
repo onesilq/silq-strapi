@@ -24,6 +24,7 @@ export interface FestivityElement extends Struct.ComponentSchema {
     >;
     viewPortHeight: Schema.Attribute.Decimal;
     viewPortWidth: Schema.Attribute.Decimal;
+    visibleDuration: Schema.Attribute.Integer;
   };
 }
 

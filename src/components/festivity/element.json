@@ -6,6 +6,9 @@
   },
   "options": {},
   "attributes": {
+    "isActive": {
+      "type": "boolean"
+    },
     "placement": {
       "type": "enumeration",
       "enum": [
@@ -29,8 +32,8 @@
     "mediaUrl": {
       "type": "string"
     },
-    "isActive": {
-      "type": "boolean"
+    "visibleDuration": {
+      "type": "integer"
     }
   },
   "config": {}
