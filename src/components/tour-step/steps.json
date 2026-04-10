@@ -23,6 +23,30 @@
     },
     "description": {
       "type": "richtext"
+    },
+    "cutoutTarget": {
+      "type": "string"
+    },
+    "maskAssetUrl": {
+      "type": "string"
+    },
+    "guidePosition": {
+      "type": "enumeration",
+      "default": "right",
+      "enum": [
+        "right",
+        "bottom",
+        "left",
+        "top"
+      ]
+    },
+    "cutoutBorderRadius": {
+      "type": "integer",
+      "default": 16
+    },
+    "cutoutPadding": {
+      "type": "integer",
+      "default": 13
     }
   },
   "config": {}
