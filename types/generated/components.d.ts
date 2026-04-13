@@ -98,8 +98,21 @@ export interface TourStepSteps extends Struct.ComponentSchema {
   };
   attributes: {
     cutoutBorderRadius: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
       Schema.Attribute.DefaultTo<16>;
-    cutoutPadding: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<13>;
+    cutoutPadding: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<13>;
     cutoutTarget: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
     guidePosition: Schema.Attribute.Enumeration<

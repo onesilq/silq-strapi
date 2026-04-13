@@ -42,11 +42,13 @@
     },
     "cutoutBorderRadius": {
       "type": "integer",
-      "default": 16
+      "default": 16,
+      "min": 0
     },
     "cutoutPadding": {
       "type": "integer",
-      "default": 13
+      "default": 13,
+      "min": 0
     }
   },
   "config": {}
