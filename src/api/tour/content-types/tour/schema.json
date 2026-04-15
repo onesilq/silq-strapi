@@ -35,6 +35,26 @@
       "type": "component",
       "component": "tour-step.steps",
       "repeatable": true
+    },
+    "renderMode": {
+      "type": "enumeration",
+      "default": "spotlight",
+      "enum": [
+        "overlay",
+        "spotlight"
+      ]
+    },
+    "overlayColor": {
+      "type": "string",
+      "default": "rgba(32, 32, 32, 0.3)"
+    },
+    "dismissBehavior": {
+      "type": "enumeration",
+      "default": "confirm",
+      "enum": [
+        "confirm",
+        "immediate"
+      ]
     }
   }
 }

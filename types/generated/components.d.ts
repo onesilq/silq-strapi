@@ -97,8 +97,30 @@ export interface TourStepSteps extends Struct.ComponentSchema {
     icon: 'walk';
   };
   attributes: {
+    cutoutBorderRadius: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<16>;
+    cutoutPadding: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<13>;
+    cutoutTarget: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
+    guidePosition: Schema.Attribute.Enumeration<
+      ['right', 'bottom', 'left', 'top']
+    > &
+      Schema.Attribute.DefaultTo<'right'>;
     imageUrl: Schema.Attribute.String;
+    maskAssetUrl: Schema.Attribute.String;
     orderStep: Schema.Attribute.String;
     placement: Schema.Attribute.String;
     target: Schema.Attribute.String;

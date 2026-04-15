@@ -630,6 +630,8 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dismissBehavior: Schema.Attribute.Enumeration<['confirm', 'immediate']> &
+      Schema.Attribute.DefaultTo<'confirm'>;
     featureName: Schema.Attribute.String;
     identifier: Schema.Attribute.String;
     isActive: Schema.Attribute.Boolean;
@@ -637,8 +639,12 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'> &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    overlayColor: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'rgba(32, 32, 32, 0.3)'>;
     path: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    renderMode: Schema.Attribute.Enumeration<['overlay', 'spotlight']> &
+      Schema.Attribute.DefaultTo<'spotlight'>;
     skipLimit: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
         {
