@@ -49,6 +49,18 @@
       "type": "integer",
       "default": 13,
       "min": 0
+    },
+    "maskScale": {
+      "type": "decimal",
+      "default": 1
+    },
+    "maskOffsetX": {
+      "type": "integer",
+      "default": 0
+    },
+    "maskOffsetY": {
+      "type": "integer",
+      "default": 0
     }
   },
   "config": {}

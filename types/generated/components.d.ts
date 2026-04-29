@@ -121,6 +121,9 @@ export interface TourStepSteps extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'right'>;
     imageUrl: Schema.Attribute.String;
     maskAssetUrl: Schema.Attribute.String;
+    maskOffsetX: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    maskOffsetY: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    maskScale: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<1>;
     orderStep: Schema.Attribute.String;
     placement: Schema.Attribute.String;
     target: Schema.Attribute.String;
