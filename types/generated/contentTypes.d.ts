@@ -709,6 +709,7 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'> &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    ordinal: Schema.Attribute.Integer;
     overlayColor: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'rgba(32, 32, 32, 0.3)'>;
     path: Schema.Attribute.String;

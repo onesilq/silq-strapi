@@ -23,13 +23,16 @@
     "path": {
       "type": "string"
     },
+    "ordinal": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
     "skipLimit": {
       "type": "integer",
       "default": 5,
       "min": 0
-    },
-    "isActive": {
-      "type": "boolean"
     },
     "stepsList": {
       "type": "component",
