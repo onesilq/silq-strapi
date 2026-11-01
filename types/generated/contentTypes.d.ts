@@ -705,6 +705,8 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     featureName: Schema.Attribute.String;
     identifier: Schema.Attribute.String;
     isActive: Schema.Attribute.Boolean;
+    launch: Schema.Attribute.Enumeration<['route', 'trigger']> &
+      Schema.Attribute.DefaultTo<'route'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'> &
       Schema.Attribute.Private;
@@ -724,6 +726,7 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
       > &
       Schema.Attribute.DefaultTo<5>;
     stepsList: Schema.Attribute.Component<'tour-step.steps', true>;
+    trigger: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

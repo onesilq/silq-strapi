@@ -55,6 +55,17 @@
         "confirm",
         "immediate"
       ]
+    },
+    "launch": {
+      "type": "enumeration",
+      "default": "route",
+      "enum": [
+        "route",
+        "trigger"
+      ]
+    },
+    "trigger": {
+      "type": "string"
     }
   }
 }
