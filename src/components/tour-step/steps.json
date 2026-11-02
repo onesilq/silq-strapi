@@ -9,10 +9,24 @@
     "orderStep": {
       "type": "string"
     },
-    "target": {
-      "type": "string"
-    },
     "placement": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "top-start",
+        "top-end",
+        "bottom",
+        "bottom-start",
+        "bottom-end",
+        "left",
+        "left-start",
+        "left-end",
+        "right",
+        "right-start",
+        "right-end"
+      ]
+    },
+    "target": {
       "type": "string"
     },
     "imageUrl": {
@@ -24,21 +38,8 @@
     "description": {
       "type": "richtext"
     },
-    "cutoutTarget": {
-      "type": "string"
-    },
     "maskAssetUrl": {
       "type": "string"
-    },
-    "guidePosition": {
-      "type": "enumeration",
-      "default": "right",
-      "enum": [
-        "right",
-        "bottom",
-        "left",
-        "top"
-      ]
     },
     "cutoutBorderRadius": {
       "type": "integer",
