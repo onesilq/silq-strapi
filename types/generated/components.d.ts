@@ -128,6 +128,7 @@ export interface TourStepSteps extends Struct.ComponentSchema {
         'bottom',
         'bottom-start',
         'bottom-end',
+        'center',
         'left',
         'left-start',
         'left-end',
