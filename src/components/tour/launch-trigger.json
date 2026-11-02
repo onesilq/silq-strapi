@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_tour_launch_triggers",
+  "info": {
+    "displayName": "Launch trigger"
+  },
+  "options": {},
+  "attributes": {
+    "trigger": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Route path",
+      "enum": [
+        "Route path",
+        "Anchor click"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

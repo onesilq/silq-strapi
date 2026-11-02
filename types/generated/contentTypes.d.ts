@@ -702,21 +702,22 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     dismissBehavior: Schema.Attribute.Enumeration<['confirm', 'immediate']> &
       Schema.Attribute.DefaultTo<'confirm'>;
-    featureName: Schema.Attribute.String;
-    identifier: Schema.Attribute.String;
-    isActive: Schema.Attribute.Boolean;
-    launchTrigger: Schema.Attribute.Enumeration<['route', 'click']> &
-      Schema.Attribute.DefaultTo<'route'>;
+    featureName: Schema.Attribute.String & Schema.Attribute.Required;
+    identifier: Schema.Attribute.String & Schema.Attribute.Required;
+    isActive: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    launchTrigger: Schema.Attribute.Component<'tour.launch-trigger', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'> &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    ordinal: Schema.Attribute.Integer;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    ordinal: Schema.Attribute.Integer & Schema.Attribute.Required;
     overlayColor: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'rgba(32, 32, 32, 0.3)'>;
-    path: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     renderMode: Schema.Attribute.Enumeration<['overlay', 'spotlight']> &
+      Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'spotlight'>;
     skipLimit: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
