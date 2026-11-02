@@ -142,6 +142,19 @@ export interface TourStepSteps extends Struct.ComponentSchema {
   };
 }
 
+export interface TourLaunchTrigger extends Struct.ComponentSchema {
+  collectionName: 'components_tour_launch_triggers';
+  info: {
+    displayName: 'Launch trigger';
+  };
+  attributes: {
+    trigger: Schema.Attribute.Enumeration<['Route path', 'Anchor click']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Route path'>;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
@@ -152,6 +165,7 @@ declare module '@strapi/strapi' {
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
       'tour-step.steps': TourStepSteps;
+      'tour.launch-trigger': TourLaunchTrigger;
     }
   }
 }

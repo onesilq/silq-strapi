@@ -12,33 +12,29 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "identifier": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "featureName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "isActive": {
-      "type": "boolean"
-    },
-    "launchTrigger": {
-      "type": "enumeration",
-      "default": "route",
-      "enum": [
-        "route",
-        "click"
-      ]
-    },
-    "path": {
-      "type": "string"
+      "type": "boolean",
+      "required": true,
+      "default": true
     },
     "ordinal": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "renderMode": {
       "type": "enumeration",
+      "required": true,
       "default": "spotlight",
       "enum": [
         "overlay",
@@ -66,6 +62,11 @@
         "confirm",
         "immediate"
       ]
+    },
+    "launchTrigger": {
+      "type": "component",
+      "component": "tour.launch-trigger",
+      "repeatable": false
     }
   }
 }
