@@ -20,14 +20,22 @@
     "featureName": {
       "type": "string"
     },
+    "isActive": {
+      "type": "boolean"
+    },
+    "launchTrigger": {
+      "type": "enumeration",
+      "default": "route",
+      "enum": [
+        "route",
+        "click"
+      ]
+    },
     "path": {
       "type": "string"
     },
     "ordinal": {
       "type": "integer"
-    },
-    "isActive": {
-      "type": "boolean"
     },
     "renderMode": {
       "type": "enumeration",

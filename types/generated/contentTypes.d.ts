@@ -705,6 +705,8 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     featureName: Schema.Attribute.String;
     identifier: Schema.Attribute.String;
     isActive: Schema.Attribute.Boolean;
+    launchTrigger: Schema.Attribute.Enumeration<['route', 'click']> &
+      Schema.Attribute.DefaultTo<'route'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'> &
       Schema.Attribute.Private;
