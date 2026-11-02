@@ -29,16 +29,6 @@
     "isActive": {
       "type": "boolean"
     },
-    "skipLimit": {
-      "type": "integer",
-      "default": 5,
-      "min": 0
-    },
-    "stepsList": {
-      "type": "component",
-      "component": "tour-step.steps",
-      "repeatable": true
-    },
     "renderMode": {
       "type": "enumeration",
       "default": "spotlight",
@@ -50,6 +40,16 @@
     "overlayColor": {
       "type": "string",
       "default": "rgba(32, 32, 32, 0.3)"
+    },
+    "stepsList": {
+      "type": "component",
+      "component": "tour-step.steps",
+      "repeatable": true
+    },
+    "skipLimit": {
+      "type": "integer",
+      "default": 5,
+      "min": 0
     },
     "dismissBehavior": {
       "type": "enumeration",
