@@ -52,7 +52,15 @@ export default {
   register() {},
 
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    await grantPublicReads(strapi);
-    await seedCodex(strapi);
+    // Strapi cannot see the Silq session, so it cannot decide who may read
+    // internal entries. Production calls this API with a server-held token
+    // and applies audience and team filters there. Anonymous read exists
+    // only as a local demo switch.
+    if (process.env.CODEX_ALLOW_PUBLIC_READ === 'true') {
+      await grantPublicReads(strapi);
+    }
+    if (process.env.NODE_ENV !== 'production') {
+      await seedCodex(strapi);
+    }
   },
 };
