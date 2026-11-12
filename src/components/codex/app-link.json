@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_codex_app_links",
+  "info": {
+    "displayName": "App link",
+    "icon": "link",
+    "description": "A link that opens a page inside Silq. Path is the in-app route, such as /rfqs/new."
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "path": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

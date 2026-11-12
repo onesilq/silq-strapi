@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_codex_callouts",
+  "info": {
+    "displayName": "Callout",
+    "icon": "bulb",
+    "description": "A highlighted note inside an article. Tone picks the color: tip, warning, or info."
+  },
+  "attributes": {
+    "tone": {
+      "type": "enumeration",
+      "enum": ["tip", "warning", "info"],
+      "default": "info",
+      "required": true
+    },
+    "body": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

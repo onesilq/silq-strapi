@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_codex_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "picture",
+    "description": "The title band at the top of the Codex home."
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "text"
+    }
+  }
+}

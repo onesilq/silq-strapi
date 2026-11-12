@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_codex_announcements",
+  "info": {
+    "displayName": "Announcement",
+    "icon": "bell",
+    "description": "A short notice on the Codex home. Remove the section to hide it."
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "richtext"
+    }
+  }
+}

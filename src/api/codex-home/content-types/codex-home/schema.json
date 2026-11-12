@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "codex_homes",
+  "info": {
+    "singularName": "codex-home",
+    "pluralName": "codex-homes",
+    "displayName": "Codex home",
+    "description": "The Codex landing layout. Add, remove, and reorder sections. The app renders them in this order and skips any section type it does not know yet."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "launcherLabel": {
+      "type": "string",
+      "default": "Silq Codex",
+      "required": true
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "codex.hero",
+        "codex.featured-workflows",
+        "codex.bucket-grid",
+        "codex.faq-highlights",
+        "codex.announcement"
+      ]
+    }
+  }
+}

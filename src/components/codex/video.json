@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_codex_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "play",
+    "description": "An embedded video. URL is a direct video file or a YouTube link."
+  },
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "caption": {
+      "type": "string"
+    }
+  }
+}

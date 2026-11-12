@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_codex_workflow_steps",
+  "info": {
+    "displayName": "Workflow step",
+    "icon": "bulletList",
+    "description": "One step in a workflow stepper. Label is the step name. Article is the document shown for that step."
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    }
+  }
+}
