@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "glossary_terms",
+  "info": {
+    "singularName": "glossary-term",
+    "pluralName": "glossary-terms",
+    "displayName": "Glossary term",
+    "description": "A short definition. Link to it from an article with codex://glossary/<slug>."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "term": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "term",
+      "required": true
+    },
+    "definition": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

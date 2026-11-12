@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "singularName": "team",
+    "pluralName": "teams",
+    "displayName": "Team",
+    "description": "An operational team used to filter the Codex. Audience marks whether the team itself is internal or client-facing."
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": ["internal", "client", "all"],
+      "default": "internal",
+      "required": true
+    },
+    "ordinal": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    }
+  }
+}

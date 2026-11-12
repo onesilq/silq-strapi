@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_codex_bucket_grids",
+  "info": {
+    "displayName": "Bucket grid",
+    "icon": "grid",
+    "description": "A grid of the sidebar buckets. Order follows each category's ordinal."
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Browse"
+    }
+  }
+}

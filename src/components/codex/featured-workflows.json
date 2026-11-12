@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_codex_featured_workflows",
+  "info": {
+    "displayName": "Featured workflows",
+    "icon": "apps",
+    "description": "A row of workflow cards on the Codex home. Leave workflows empty to show every published workflow."
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Workflows"
+    },
+    "workflows": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::workflow.workflow"
+    }
+  }
+}
