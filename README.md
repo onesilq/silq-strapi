@@ -1,10 +1,15 @@
-# Silq Strapi - ECR Docker Image
+# Silq Strapi
 
-This repository contains a Strapi application configured to build and deploy Docker images to AWS ECR in the Ohio region (us-east-2).
+Strapi CMS for Silq (Codex handbook, product tours, and related content), plus Docker/ECR packaging for deploy.
 
-## Purpose
+## Docs
 
-This repository serves a single purpose: **Build a Docker image of Strapi and publish it to the ECR repository on AWS Ohio**.
+- **[Codex for PMs and designers](docs/README.md)** — how to author handbook content in the admin
+- **[AGENTS.md](AGENTS.md)** — conventions for AI coding agents working in this repo
+
+## Purpose (deploy)
+
+This repository also **builds a Docker image of Strapi and publishes it to ECR on AWS**.
 
 ## Prerequisites
 
