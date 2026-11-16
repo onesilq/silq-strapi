@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_codex_faq_highlights",
+  "info": {
+    "displayName": "FAQ highlights",
+    "icon": "question",
+    "description": "A short list of FAQs on the home. Limit is how many to show."
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Common questions"
+    },
+    "limit": {
+      "type": "integer",
+      "default": 4,
+      "min": 1
+    }
+  }
+}

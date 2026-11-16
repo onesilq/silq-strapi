@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faqs",
+  "info": {
+    "singularName": "faq",
+    "pluralName": "faqs",
+    "displayName": "FAQ",
+    "description": "A question and answer. Optional workflow ties it to a stepper. Ordinal sets the list order."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "answer": {
+      "type": "richtext",
+      "required": true
+    },
+    "workflow": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::workflow.workflow"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag"
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": ["internal", "client", "all"],
+      "default": "all",
+      "required": true
+    },
+    "ordinal": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    }
+  }
+}

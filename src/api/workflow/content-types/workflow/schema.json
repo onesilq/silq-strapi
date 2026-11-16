@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "workflows",
+  "info": {
+    "singularName": "workflow",
+    "pluralName": "workflows",
+    "displayName": "Workflow",
+    "description": "A stepper of articles. Category places it in a sidebar bucket. Steps are ordered. Related tour powers Show me in app."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "summary": {
+      "type": "text"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "workflows"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag"
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": ["internal", "client", "all"],
+      "default": "all",
+      "required": true
+    },
+    "ordinal": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "relatedTour": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tour.tour"
+    },
+    "steps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "codex.workflow-step"
+    }
+  }
+}

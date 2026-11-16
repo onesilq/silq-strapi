@@ -5,7 +5,7 @@
     "singularName": "category",
     "pluralName": "categories",
     "displayName": "Category",
-    "description": "Organize your content into categories"
+    "description": "A Codex sidebar bucket. Ordinal sets the order. Icon is a key the app knows: home, quotes, project, ship, help, book."
   },
   "options": {
     "draftAndPublish": false
@@ -26,6 +26,28 @@
     },
     "description": {
       "type": "text"
+    },
+    "ordinal": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": ["home", "quotes", "project", "ship", "help", "book"],
+      "default": "book"
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": ["internal", "client", "all"],
+      "default": "all",
+      "required": true
+    },
+    "workflows": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::workflow.workflow",
+      "mappedBy": "category"
     }
   }
 }

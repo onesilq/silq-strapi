@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_codex_tour_ctas",
+  "info": {
+    "displayName": "Tour button",
+    "icon": "play",
+    "description": "A button that starts an existing product tour. Pick the tour; the label is the button text."
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "Show me in app"
+    },
+    "tour": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tour.tour"
+    }
+  }
+}

@@ -5,7 +5,7 @@
     "singularName": "article",
     "pluralName": "articles",
     "displayName": "Article",
-    "description": "Create your blog content"
+    "description": "A Codex document. Audience controls who sees it in the app. Tags and teams power search and filters. Related articles appear in the side rail. In the body, link with codex://article/<slug>, codex://workflow/<slug>, or codex://glossary/<slug>."
   },
   "options": {
     "draftAndPublish": true
@@ -17,7 +17,33 @@
     },
     "description": {
       "type": "text",
-      "maxLength": 80
+      "maxLength": 200
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team"
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": ["internal", "client", "all"],
+      "default": "all",
+      "required": true
+    },
+    "relatedArticles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article"
+    },
+    "estimatedReadMinutes": {
+      "type": "integer",
+      "min": 1,
+      "default": 3
     },
     "slug": {
       "type": "uid",
@@ -43,7 +69,16 @@
     },
     "blocks": {
       "type": "dynamiczone",
-      "components": ["shared.media", "shared.quote", "shared.rich-text", "shared.slider"]
+      "components": [
+        "shared.media",
+        "shared.quote",
+        "shared.rich-text",
+        "shared.slider",
+        "codex.callout",
+        "codex.tour-cta",
+        "codex.app-link",
+        "codex.video"
+      ]
     }
   }
 }
