@@ -1,7 +1,5 @@
 import type { Core } from '@strapi/strapi';
 
-import { seedCodex } from './codex/seed';
-
 const PUBLIC_READ_ACTIONS = [
   'api::team.team.find',
   'api::team.team.findOne',
@@ -58,9 +56,6 @@ export default {
     // only as a local demo switch.
     if (process.env.CODEX_ALLOW_PUBLIC_READ === 'true') {
       await grantPublicReads(strapi);
-    }
-    if (process.env.NODE_ENV !== 'production') {
-      await seedCodex(strapi);
     }
   },
 };
