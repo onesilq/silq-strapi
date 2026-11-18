@@ -11,6 +11,8 @@
     "develop": "strapi develop",
     "seed:example": "node ./scripts/seed.js",
     "seed:page-context": "node ./scripts/seed-page-context.mjs",
+    "seed:page-context:staging": "node ./scripts/seed-page-contexts-mcp.mjs",
+    "seed:page-context:staging:admin-jwt": "node ./scripts/seed-page-contexts-remote.mjs",
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
