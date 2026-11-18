@@ -25,7 +25,7 @@ Tours live in Strapi too (`Tour`). Codex can link a workflow or an in-article bu
 Use **Page context** when staff are on a screen in Silq and should see a short list of relevant handbook entries without opening Codex home.
 
 - **Route pattern** — must start with `/`. Use exact paths (`/rfqs/new`) or wildcards:
-  - Prefix: `/projects/*` (same as product tours)
+  - Prefix: `/projects/*` matches **child** paths only (`/projects/123`, not the list at `/projects`). Pair list pages with an exact pattern plus optional query rules (e.g. `/projects` + `config=active`).
   - Per segment: `/projects/*/shipments/*/routes`
 - **Query rules** (optional) — e.g. `config` = `active` for `/projects?config=active`.
 - **Targets** — ordered list of articles or workflows (pick **workflow step** when using a workflow).
