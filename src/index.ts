@@ -16,6 +16,8 @@ const PUBLIC_READ_ACTIONS = [
   'api::glossary-term.glossary-term.find',
   'api::glossary-term.glossary-term.findOne',
   'api::codex-home.codex-home.find',
+  'api::codex-page-context.codex-page-context.find',
+  'api::codex-page-context.codex-page-context.findOne',
   'api::author.author.find',
   'api::author.author.findOne',
 ];

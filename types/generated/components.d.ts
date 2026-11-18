@@ -100,6 +100,44 @@ export interface CodexHero extends Struct.ComponentSchema {
   };
 }
 
+export interface CodexPageTarget extends Struct.ComponentSchema {
+  collectionName: 'components_codex_page_targets';
+  info: {
+    description: 'Codex article or workflow to show when this page context matches.';
+    displayName: 'Page target';
+    icon: 'link';
+  };
+  attributes: {
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
+    isPrimary: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    targetType: Schema.Attribute.Enumeration<['article', 'workflow']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'article'>;
+    workflow: Schema.Attribute.Relation<'oneToOne', 'api::workflow.workflow'>;
+    workflowStep: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<1>;
+  };
+}
+
+export interface CodexQueryRule extends Struct.ComponentSchema {
+  collectionName: 'components_codex_query_rules';
+  info: {
+    description: 'URL search param that must match for a page context (e.g. config=active).';
+    displayName: 'Query rule';
+    icon: 'filter';
+  };
+  attributes: {
+    key: Schema.Attribute.String & Schema.Attribute.Required;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface CodexTourCta extends Struct.ComponentSchema {
   collectionName: 'components_codex_tour_ctas';
   info: {
@@ -306,6 +344,8 @@ declare module '@strapi/strapi' {
       'codex.faq-highlights': CodexFaqHighlights;
       'codex.featured-workflows': CodexFeaturedWorkflows;
       'codex.hero': CodexHero;
+      'codex.page-target': CodexPageTarget;
+      'codex.query-rule': CodexQueryRule;
       'codex.tour-cta': CodexTourCta;
       'codex.video': CodexVideo;
       'codex.workflow-step': CodexWorkflowStep;

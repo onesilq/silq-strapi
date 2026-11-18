@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_codex_page_targets",
+  "info": {
+    "displayName": "Page target",
+    "icon": "link",
+    "description": "Codex article or workflow to show when this page context matches."
+  },
+  "attributes": {
+    "targetType": {
+      "type": "enumeration",
+      "enum": ["article", "workflow"],
+      "default": "article",
+      "required": true
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
+    "workflow": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::workflow.workflow"
+    },
+    "workflowStep": {
+      "type": "integer",
+      "default": 1,
+      "min": 1
+    },
+    "isPrimary": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

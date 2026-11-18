@@ -36,6 +36,7 @@ Human-facing Codex authoring guidance for PMs and designers lives in [`docs/READ
 | UID | Role |
 | --- | --- |
 | `api::codex-home.codex-home` | Single type — home sections dynamic zone |
+| `api::codex-page-context.codex-page-context` | In-app route → handbook targets (Guides widget) |
 | `api::article.article` | Handbook documents (also used as workflow steps) |
 | `api::category.category` | Sidebar buckets |
 | `api::workflow.workflow` | Steppers |

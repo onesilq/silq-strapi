@@ -653,6 +653,54 @@ export interface ApiCodexHomeCodexHome extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCodexPageContextCodexPageContext
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'codex_page_contexts';
+  info: {
+    description: 'Maps an in-app route pattern to Codex articles and workflows for the page guides widget.';
+    displayName: 'Page context';
+    pluralName: 'codex-page-contexts';
+    singularName: 'codex-page-context';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    audience: Schema.Attribute.Enumeration<['internal', 'client', 'all']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'all'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::codex-page-context.codex-page-context'
+    > &
+      Schema.Attribute.Private;
+    panelSubtitle: Schema.Attribute.Text;
+    panelTitle: Schema.Attribute.String;
+    priority: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    queryRules: Schema.Attribute.Component<'codex.query-rule', true>;
+    routePattern: Schema.Attribute.String & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    targets: Schema.Attribute.Component<'codex.page-target', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    teams: Schema.Attribute.Relation<'manyToMany', 'api::team.team'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: 'faqs';
   info: {
@@ -1498,6 +1546,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::codex-home.codex-home': ApiCodexHomeCodexHome;
+      'api::codex-page-context.codex-page-context': ApiCodexPageContextCodexPageContext;
       'api::faq.faq': ApiFaqFaq;
       'api::festive-wrapper.festive-wrapper': ApiFestiveWrapperFestiveWrapper;
       'api::global.global': ApiGlobalGlobal;

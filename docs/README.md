@@ -16,8 +16,23 @@ Use this doc when you are writing or structuring handbook content. Engineering o
 | **Glossary term** | Short definition (hover / glossary page) | No draft — live when saved |
 | **Team** | Filter chip in the Codex sidebar | No draft — live when saved |
 | **Tag** | Search label on articles, workflows, FAQs | No draft — live when saved |
+| **Page context** | Maps an in-app route pattern to articles/workflows (Guides pill in Silq) | Yes |
 
 Tours live in Strapi too (`Tour`). Codex can link a workflow or an in-article button to an existing tour (“Show me in Silq”).
+
+## Page context (Guides for this page)
+
+Use **Page context** when staff are on a screen in Silq and should see a short list of relevant handbook entries without opening Codex home.
+
+- **Route pattern** — must start with `/`. Use exact paths (`/rfqs/new`) or wildcards:
+  - Prefix: `/projects/*` (same as product tours)
+  - Per segment: `/projects/*/shipments/*/routes`
+- **Query rules** (optional) — e.g. `config` = `active` for `/projects?config=active`.
+- **Targets** — ordered list of articles or workflows (pick **workflow step** when using a workflow).
+- **Priority** — higher wins when two contexts match the same URL.
+- **Panel title / subtitle** — copy in the Guides popup.
+
+Publish the entry; the app loads published contexts with the Codex catalog.
 
 ## Suggested authoring order
 

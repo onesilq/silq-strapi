@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "codex_page_contexts",
+  "info": {
+    "singularName": "codex-page-context",
+    "pluralName": "codex-page-contexts",
+    "displayName": "Page context",
+    "description": "Maps an in-app route pattern to Codex articles and workflows for the page guides widget."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "routePattern": {
+      "type": "string",
+      "required": true
+    },
+    "queryRules": {
+      "type": "component",
+      "repeatable": true,
+      "component": "codex.query-rule"
+    },
+    "panelTitle": {
+      "type": "string"
+    },
+    "panelSubtitle": {
+      "type": "text"
+    },
+    "priority": {
+      "type": "integer",
+      "default": 0
+    },
+    "targets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "codex.page-target",
+      "required": true,
+      "min": 1
+    },
+    "audience": {
+      "type": "enumeration",
+      "enum": ["internal", "client", "all"],
+      "default": "all",
+      "required": true
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team"
+    }
+  }
+}
