@@ -81,10 +81,13 @@ export const STAGING_PAGE_CONTEXTS = [
     priority: 80,
     audience: "all",
     workflowSlug: "project-planning-execution",
+    workflowStep: 1,
     articleSlugs: [
       "assign-collaborators",
+      "template-types-hierarchy",
       "apply-task-templates",
       "add-products",
+      "complete-tasks",
     ],
   },
   {

@@ -129,22 +129,23 @@ async function loadWorkflowMap() {
 function buildTargets(def, articles, workflows) {
   const targets = [];
   let primarySet = false;
-  for (const slug of def.articleSlugs) {
+  def.articleSlugs.forEach((slug, index) => {
     const documentId = articles.get(slug);
     if (!documentId) {
       console.warn(`  missing article: ${slug}`);
-      continue;
+      return;
     }
     const isPrimary = !primarySet;
     primarySet = true;
+    const step = def.workflowSlug ? index + 1 : 1;
     targets.push({
       __component: "codex.page-target",
       targetType: "article",
       article: { connect: [{ documentId }] },
-      workflowStep: 1,
+      workflowStep: step,
       isPrimary,
     });
-  }
+  });
   if (def.workflowSlug) {
     const documentId = workflows.get(def.workflowSlug);
     if (documentId) {

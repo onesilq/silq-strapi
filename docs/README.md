@@ -4,6 +4,8 @@ Silq Codex is the in-app product handbook. Content lives in this Strapi admin; t
 
 Use this doc when you are writing or structuring handbook content. Engineering owns schemas and app rendering; you own titles, copy, structure, media, and audience.
 
+For a staging content checklist (workflows, page contexts, naming, markdown), see [CODEX-CONTENT-AUDIT.md](./CODEX-CONTENT-AUDIT.md).
+
 ## What Codex is made of
 
 | Content type | What it is | Publish? |

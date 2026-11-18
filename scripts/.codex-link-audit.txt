@@ -1,0 +1,8 @@
+Articles: 37
+Issues: 3
+
+TOUR_CTA	manage-projects	projects-tour
+TOUR_CTA	track-shipments	shipments-tour
+TOUR_CTA	share-invoices	invoicing-tour
+
+(Re-run 2026-11-18 after staging fixes: no WORKFLOW_TOUR, no APP_LINK_MISLEADING, no BROKEN_CODEX in published bodies.)
