@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_codex_query_rules",
+  "info": {
+    "displayName": "Query rule",
+    "icon": "filter",
+    "description": "URL search param that must match for a page context (e.g. config=active)."
+  },
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
